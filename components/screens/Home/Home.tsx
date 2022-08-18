@@ -1,11 +1,15 @@
 import { FC } from "react";
+import GameCard from "../../GameCard";
 import styles from "./Home.module.scss";
 
 const Home: FC = () => {
     return (
-        <div>
-            Home
-        </div>
+        <>
+            <GameCard />
+            <GameCard />
+            <GameCard />
+            <GameCard />
+        </>
     )
 }
 

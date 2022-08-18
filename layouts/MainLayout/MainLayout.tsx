@@ -1,4 +1,5 @@
 import { FC, ReactNode } from "react";
+import Container from "../../components/Container";
 import Header from "../../components/Header";
 import styles from "./MainLayout.module.scss";
 
@@ -10,9 +11,9 @@ const MainLayout: FC<MainLayoutProps> = ({ children }) => {
     return (
         <>
             <Header />
-            <main className={styles.main}>
+            <Container>
                 {children}
-            </main>
+            </Container>
         </>
     )
 }
