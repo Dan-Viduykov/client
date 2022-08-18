@@ -1,0 +1,20 @@
+.header {
+    padding: 10px 0;
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__title {
+        font-size: 36px;
+        color: #fff;
+        text-decoration: none;
+    }
+
+    &__basket {
+        color: #fff;
+        font-size: 24px;
+    }
+}

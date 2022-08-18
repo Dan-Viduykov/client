@@ -1,5 +1,12 @@
 @import '../../styles/vars';
 
-.main {
+.layout {
+    min-height: 100vh;
     background-color: $black;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1 1 auto;
 }

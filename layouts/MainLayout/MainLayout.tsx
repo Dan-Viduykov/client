@@ -9,12 +9,12 @@ interface MainLayoutProps {
 
 const MainLayout: FC<MainLayoutProps> = ({ children }) => {
     return (
-        <>
+        <div className={styles.layout}>
             <Header />
-            <Container>
+            <Container className={styles.container}>
                 {children}
             </Container>
-        </>
+        </div>
     )
 }
 

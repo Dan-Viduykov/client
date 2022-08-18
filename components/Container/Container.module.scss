@@ -1,0 +1,12 @@
+@import '../../styles/mixins';
+
+.main {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 15px;
+    overflow: hidden;
+
+    @include display() {
+        padding: 10px;
+    }
+}
