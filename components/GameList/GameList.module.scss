@@ -1,0 +1,19 @@
+@import '../../styles/mixins';
+
+.list {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+
+    @include display(1080px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include display(800px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    &__item {
+
+    }
+}

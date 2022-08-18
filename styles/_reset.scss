@@ -12,7 +12,7 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-  margin: 0;
+    margin: 0;
 	padding: 0;
 	border: 0;
 	font-size: 100%;
@@ -23,6 +23,10 @@ time, mark, audio, video {
 /* make sure to set some focus styles for accessibility */
 :focus {
     outline: 0;
+}
+
+*, *::after, *::before {
+    box-sizing: border-box;
 }
 
 /* HTML5 display-role reset for older browsers */

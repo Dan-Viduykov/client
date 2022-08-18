@@ -1,14 +1,12 @@
 import { FC } from "react";
 import GameCard from "../../GameCard";
+import GameList from "../../GameList";
 import styles from "./Home.module.scss";
 
 const Home: FC = () => {
     return (
         <>
-            <GameCard />
-            <GameCard />
-            <GameCard />
-            <GameCard />
+            <GameList />
         </>
     )
 }
