@@ -1,6 +1,7 @@
 import { FC } from "react";
 import styles from "./GameCard.module.scss";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 interface GameCardProps {
     className?: string;
@@ -8,8 +9,10 @@ interface GameCardProps {
 }
 
 const GameCard: FC<GameCardProps> = ({game, className}) => {
+    const router = useRouter();
+    
     return (
-        <div className={styles.card}>
+        <div className={styles.card} onClick={() => router.push(`/game/${game._id}`)}>
             <div className={styles.card__img}>
                 <Image
                     src={game.picture}

@@ -99,7 +99,13 @@ const GameList: FC = () => {
 
     return (
         <ul className={styles.list}>
-            {games.map(game => <GameCard className={styles.list__item} key={game._id} game={game} />)}
+            {games.map(game => {
+                return <GameCard
+                    className={styles.list__item}
+                    key={game._id}
+                    game={game}
+                />
+            })}
         </ul>
     )
 }
