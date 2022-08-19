@@ -5,16 +5,12 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        overflow: visible;
     }
 
     &__title {
         font-size: 36px;
         color: #fff;
         text-decoration: none;
-    }
-
-    &__basket {
-        color: #fff;
-        font-size: 24px;
     }
 }
