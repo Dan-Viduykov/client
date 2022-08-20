@@ -2,10 +2,11 @@ import { FC } from "react";
 import styles from "./GameCard.module.scss";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { IGame } from "../../types/game";
 
 interface GameCardProps {
     className?: string;
-    game: any;
+    game: IGame;
 }
 
 const GameCard: FC<GameCardProps> = ({game, className}) => {
@@ -15,8 +16,12 @@ const GameCard: FC<GameCardProps> = ({game, className}) => {
         <div className={styles.card} onClick={() => router.push(`/game/${game._id}`)}>
             <div className={styles.card__img}>
                 <Image
-                    src={game.picture}
-                    alt=""
+                    loader={() => `http://localhost:5000/${game.picture}`}
+                    src={`http://localhost:5000/${game.picture}`}
+                    unoptimized={true}
+                    width={200}
+                    height={200}
+                    alt={game.name}
                 />
             </div>
             <div className={styles.card__content}>
