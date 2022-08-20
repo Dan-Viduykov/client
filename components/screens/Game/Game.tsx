@@ -3,7 +3,7 @@ import Image from "next/image";
 import styles from "./Game.module.scss";
 
 interface GameProps {
-    gameId: string;
+    gameId?: string;
 }
 
 const Game: FC<GameProps> = ({ gameId }) => {
