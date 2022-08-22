@@ -1,5 +1,4 @@
 import { FC } from "react";
-import { IGame } from "../../types/game";
 import styles from "./Tags.module.scss";
 
 interface TagsProps {

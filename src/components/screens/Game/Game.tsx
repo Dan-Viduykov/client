@@ -6,6 +6,8 @@ import { useGetGameByIdQuery } from "../../../services/game.api";
 import placeholder from '../../../assets/placeholder.jpg'
 import styles from "./Game.module.scss";
 import Loading from "../../Loading";
+import GameField from "./GameField";
+import CardButton from "../../CardButton";
 
 const Game: FC = () => {
     const {query: {id}} = useRouter()
@@ -28,18 +30,22 @@ const Game: FC = () => {
     return (
         <div className={styles.game}>
             <h1 className={styles.game__title}>{game?.name}</h1>
-            <div className={styles.game__video}>
-                {gameVideo}
-            </div>
+                <GameField className={styles.game__video} label="Ttailer">
+                    {gameVideo}
+                </GameField>
             <div className={styles.game__info}>
                 <div className={styles.game__img}>
                     {gameImage}
                 </div>
-                <p className={styles.game__description}>{game?.description}</p>
-                <Tags tags={game?.tags} />
+                <GameField className={styles.game__field} label="About game">
+                    <p className={styles.game__description}>{game?.description}</p>
+                </GameField>
+                <GameField className={styles.game__field} label="Tags for game">
+                    <Tags tags={game?.tags} />
+                </GameField>
                 <div className={styles.game__infoBottom}>
                     <p className={styles.game__price}>{game?.price} руб.</p>
-                    <button className={styles.game__button}>В корзину</button>
+                    <CardButton />
                 </div>
             </div>
         </div>

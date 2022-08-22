@@ -1,5 +1,4 @@
-import { IBaseQeury } from './game.types';
-import { IGame } from './../types/game';
+import { IBaseQeury, IGame } from './game.types';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const gameApi = createApi({
