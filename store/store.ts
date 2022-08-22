@@ -1,22 +1,44 @@
+import { configureStore, PreloadedState } from "@reduxjs/toolkit";
+import { createWrapper } from "next-redux-wrapper";
+import { basketReducer } from './basket/basket.slice';
+import { loadReducer } from './load/load.slice';
 import { gameApi } from './../services/game.api';
-import { configureStore } from '@reduxjs/toolkit';
-import { createWrapper } from 'next-redux-wrapper';
-import { basketSlice } from './basket/basket.slice';
+import { useMemo } from 'react'
 
-const makeStore = () =>
-  configureStore({
+let store: AppStore;
+
+export const initStore = (preloadedState = {}) => {
+  return configureStore({
     reducer: {
-      [basketSlice.name]: basketSlice.reducer,
+      basketReducer,
+      loadReducer,
       [gameApi.reducerPath]: gameApi.reducer,
     },
-    middleware: getDefaultMiddleware => getDefaultMiddleware().concat(gameApi.middleware),
-    devTools: true,
-});
+    preloadedState,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(gameApi.middleware),
+  });
+}
 
-export type AppStore = ReturnType<typeof makeStore>;
+export const initializeStore = (preloadedState: PreloadedState<RootState>) => {
+  let _store = store ?? initStore(preloadedState)
 
-export type AppDispatch = AppStore['dispatch'];
-export type RootState = ReturnType<AppStore['getState']>;
+  if (preloadedState && store) {
+    _store = initStore({...store.getState(), ...preloadedState})
+  }
 
-export const wrapper = createWrapper<AppStore>(makeStore);
-export const selectBasket = (id: any) => (state: RootState) => state?.[basketSlice.name]?.[id];
+  if (typeof window === 'undefined') return _store
+  if (!store) store = _store
+
+  return _store
+}
+
+export function useStore(initialState: RootState) {
+  const store = useMemo(() => initializeStore(initialState), [initialState])
+  return store
+}
+
+export type AppStore = ReturnType<typeof initStore>
+export type AppDispatch = AppStore['dispatch']
+export type RootState = ReturnType<AppStore['getState']>
+
+export const wrapper = createWrapper<AppStore>(initStore, {debug: false})

@@ -1,34 +1,33 @@
+import { IBaseQeury } from './game.types';
 import { IGame } from './../types/game';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const gameApi = createApi({
-    reducerPath: 'game/api',
+    reducerPath: 'gameApi',
     baseQuery: fetchBaseQuery({
         baseUrl: 'http://localhost:5000/'
     }),
-    refetchOnFocus: true,
     endpoints: builder => ({
-        searchGame: builder.query<IGame[], string>({
-            query: (search: string) => ({
-                url: `games/search`,
-                params: {
-                    query: search,
-                }
-            })
+        getGames: builder.query<IGame[], IBaseQeury>({
+            query: ({count = 8, offset = 0}) => `games?count=${count}&offset=${offset}`
         }),
-        getGameById: builder.query<IGame, string>({
-            query: (id) => `${id}`,
+        getGameById: builder.query<IGame, string | string[]>({
+            query: id => `games/${id}`
+        }),
+        searchGame: builder.query<IGame[], string>({
+            query: query => `games/search?query=${query}`
         }),
     })
-        // getAllGames: builder.query<IGame[], {count: number, offset: number}>({
-        //     query: (count: number, offset: number) => ({
-        //         url: `games`,
-        //         params: {
-        //             count,
-        //             offset
-        //         }
-        //     }),
-        // }),
 })
 
-export const { useGetGameByIdQuery, useSearchGameQuery } = gameApi
+export const {
+    useGetGameByIdQuery,
+    useSearchGameQuery,
+    useGetGamesQuery,
+} = gameApi
+
+export const {
+    getGames,
+    getGameById,
+    searchGame
+} = gameApi.endpoints

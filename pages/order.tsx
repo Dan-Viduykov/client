@@ -1,8 +1,8 @@
-import { FC } from "react";
 import MainLayout from "../layouts/MainLayout";
 import Purchase from "../components/screens/Purchase";
+import { NextPage } from "next";
 
-const Order: FC = () => {
+const Order: NextPage = () => {
     return (
         <MainLayout>
             <Purchase />

@@ -1,10 +1,10 @@
 import { FC } from "react";
 import styles from "./GameList.module.scss";
 import GameCard from "../GameCard";
-import { useSearchGameQuery } from "../../services/game.api";
+import { useGetGamesQuery } from "../../services/game.api";
 
 const GameList: FC = () => {    
-    const {isLoading, isError, data} = useSearchGameQuery('')
+    const {isLoading, isError, data} = useGetGamesQuery()
 
     return (
         <ul className={styles.list}>

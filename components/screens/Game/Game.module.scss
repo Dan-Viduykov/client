@@ -42,20 +42,6 @@
         color: $white;
     }
 
-    &__tags {
-        margin-bottom: 16px;
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    &__tag {
-        padding: 5px 10px;
-        margin-bottom: 8px;
-        background-color: darkgray;
-        border-radius: 16px;
-        margin-right: 8px;
-    }
-
     &__infoBottom {
         display: flex;
         justify-content: flex-end;

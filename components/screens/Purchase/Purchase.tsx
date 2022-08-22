@@ -3,10 +3,10 @@ import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import styles from "./Purchase.module.scss";
-import { useAppSelector } from "../../../hooks/redux";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
 
 const Purchase: FC = () => {
-    const { games } = useAppSelector(state => state.basket)
+    const { games } = useTypedSelector(state => state.basketReducer)
 
     const totalPrice = games.reduce((total, game) => total += game.price, 0)
 
