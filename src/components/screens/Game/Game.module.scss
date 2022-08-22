@@ -1,51 +1,112 @@
 @import '../../../styles/vars';
+@import '../../../styles/mixins';
 
 .game {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr 5fr;
+    grid-template: min-content auto / 3fr 2fr;
     gap: 40px;
 
+    @include display(1440px) {
+        grid-template: min-content auto auto / 3fr 2fr;
+    }
+
     &__title {
-        grid-column: 1 / 3;
-        grid-row: 1 / 2;
+        grid: 1 / 2;
+        grid-row: 1 / 2;    
         color: $white;
         font-size: 48px;
     }
 
     &__video {
+        margin-top: -24px;
         grid-row: 2 / 3;
         grid-column: 1 / 2; 
+        
+        @include display(1440px) {
+            grid-column: 1 / 3;
+            justify-self: center;   
+        }
+
+        video {
+            border-radius: 16px;
+        }
+
     }
 
     &__info {
         grid-row: 2 / 3;
         grid-column: 2 / 3; 
+
+        @include display(1440px) {
+            grid-row: 3 / 4;
+            grid-column: 1 / 3;
+            display: grid;
+            grid-template: auto auto / 1fr 1fr;
+            column-gap: 40px;
+        }
     }
 
     &__img {
         width: 100%;
         height: 200px;
         margin-bottom: 16px;
-        grid-row: 2 / 3;
-        grid-column: 2 / 3; 
+        border-radius: 16px;
         overflow: hidden;
 
         img {
             object-fit: cover;
         }
+
+        @include display(1440px) {
+            margin-top: 24px;
+            height: auto;
+            grid-row: 1 / 2;
+            grid-column: 1 / 2;
+            align-self: flex-start;
+        }
+        @include display(940px) {
+            width: 70%;
+            grid-column: 1 / 3;
+        }
+    }
+
+    &__field {
+        margin-bottom: 16px;
+
+        &:nth-child(2) {
+            @include display(1440px) {
+                grid-row: 3 / 4;
+                grid-column: 1 / 3;
+            }
+        }
+        &:nth-child(3) {
+            @include display(940px) {
+                grid-row: 2 / 3;
+                grid-column: 1 / 3;
+            }
+        }
     }
     
     &__description {
-        margin-bottom: 16px;
         font-size: 16px;
-        color: $white;
+        color: $white;        
     }
 
     &__infoBottom {
         display: flex;
         justify-content: flex-end;
         align-items: center;
+
+        @include display(1440px) {
+            margin-bottom: 16px;
+            grid-row: 1 / 2;
+            grid-column: 2   / 3;
+            align-self: flex-end;
+            justify-self: end;
+        }
+        @include display(940px) {
+            justify-self: flex-end;
+        }
     }
 
     &__price {
