@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { IGame } from "../../types/game";
 import Tags from "../Tags";
 import ErrorBoundary from "../ErrorBoundary";
+import CardButton from "../CardButton";
 
 interface GameCardProps {
     className?: string;
@@ -33,8 +34,7 @@ const GameCard: FC<GameCardProps> = ({game, className}) => {
                 <Tags className={styles.card__tags} tags={game.tags} count={3} />
                 <div className={styles.card__bottom}>
                     <p className={styles.card__price}>{game.price} руб.</p>
-                    <button className={`${styles.card__button} ${styles.card__button_add}`}>В корзину</button>
-                    {/* <button className={styles.card__button_remove}></button> */}
+                    <CardButton />
                 </div>
             </div>
         </a>

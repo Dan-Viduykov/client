@@ -1,8 +1,9 @@
 @import '../../styles/vars';
+@import '../../styles/mixins';
 
 .card {
     border-radius: 16px;
-    background-color: rgb(58, 58, 58);
+    background-color: #ccc4;
     overflow: hidden;
     
     &__img {
@@ -11,6 +12,7 @@
         
         img {
             object-fit: cover;
+
         }
     }
 
@@ -41,18 +43,6 @@
 
     &__price {
         color: $white;
-    }
-
-    &__button {
-        padding: 5px 15px;
-        border-radius: 8px;
-        color: $white;
-        border: none;
-
-        &_add {
-            background-color: rgb(100, 68, 195);
-        }
-
-        &_remove {}
+        font-weight: 700;
     }
 }
