@@ -2,6 +2,7 @@ import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
     gameLimit: 8,
+    gameOffset: 0
 }
 
 export const loadSlice = createSlice({
