@@ -30,7 +30,7 @@ const GameCard: FC<GameCardProps> = ({game, className}) => {
             </div>
             <div className={styles.card__content}>
                 <h2 className={styles.card__title}>{game.name}</h2>
-                <Tags tags={game.tags} count={3} />
+                <Tags className={styles.card__tags} tags={game.tags} count={3} />
                 <div className={styles.card__bottom}>
                     <p className={styles.card__price}>{game.price} руб.</p>
                     <button className={`${styles.card__button} ${styles.card__button_add}`}>В корзину</button>
