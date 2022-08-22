@@ -4,7 +4,7 @@ import GameCard from "../GameCard";
 import { useGetGamesQuery } from "../../services/game.api";
 
 const GameList: FC = () => {    
-    const {isLoading, isError, data} = useGetGamesQuery(8, 0)
+    const {isLoading, isError, data} = useGetGamesQuery({})
 
     return (
         <ul className={styles.list}>

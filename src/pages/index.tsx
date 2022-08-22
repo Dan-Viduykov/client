@@ -1,8 +1,8 @@
-import { GetStaticProps, NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import { initStore } from "../store/store";
+import { getGames } from "../services/game.api";
 import MainLayout from "../layouts/MainLayout";
 import Home from "../components/screens/Home";
-import { getGames } from "../services/game.api";
 
 const Index: NextPage = () => {
     return (
@@ -12,12 +12,10 @@ const Index: NextPage = () => {
     )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-    const store = initStore()
-    const state = store.getState()
-    const { gameLimit } = state.loadReducer
+export const getServerSideProps: GetServerSideProps = async () => {
+    const store = initStore();
     
-    await store.dispatch(getGames.initiate(gameLimit, gameLimit))
+    await store.dispatch(getGames.initiate({count: 8, offset: 8}))
   
     return {props: { initialReduxState: store.getState()}
 }}

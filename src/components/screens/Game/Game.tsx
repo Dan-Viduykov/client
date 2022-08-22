@@ -8,12 +8,22 @@ import styles from "./Game.module.scss";
 import Loading from "../../Loading";
 
 const Game: FC = () => {
-    const {push, query: {id}} = useRouter()
+    const {query: {id}} = useRouter()
     const {isLoading, isError, data: game} = useGetGameByIdQuery(id);
 
-    const gameVideo = !game?.video || isLoading
-                        ? <Loading />
+    const gameVideo = !game?.video || isLoading ? <Loading />
                         : <video src={`http://localhost:5000/${game?.video}`} controls />;
+    const gameImage = !game?.video || isLoading ? <Loading />
+                        : <Image
+                            loader={() => `http://localhost:5000/${game?.picture}`}
+                            src={`http://localhost:5000/${game?.picture}`}
+                            unoptimized={true}
+                            priority={true}
+                            width={324}
+                            height={151}
+                            layout="responsive"
+                            alt={game?.name}
+                        />
 
     return (
         <div className={styles.game}>
@@ -23,16 +33,7 @@ const Game: FC = () => {
             </div>
             <div className={styles.game__info}>
                 <div className={styles.game__img}>
-                    <Image
-                        loader={() => `http://localhost:5000/${game?.picture}`}
-                        src={`http://localhost:5000/${game?.picture}`}
-                        unoptimized={true}
-                        priority={true}
-                        width={324}
-                        height={151}
-                        layout="responsive"
-                        alt={game?.name}
-                    />
+                    {gameImage}
                 </div>
                 <p className={styles.game__description}>{game?.description}</p>
                 <Tags tags={game?.tags} />

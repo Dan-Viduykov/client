@@ -8,13 +8,13 @@ interface TagsProps {
     count?: number;
 }
 
-const Tags: FC<TagsProps> = ({ tags = [], className, count }) => {
-    const elements = tags.filter((tag, index) => count || tags.length > index)
-                         .map((tag, index) => <li key={`tag${index}`} className={styles.tags__item}>{tag}</li>)
-
+const Tags: FC<TagsProps> = ({ tags = [], className, count = tags.length }) => {
     return (
         <ul className={`${styles.tags} ${className}`}>
-            { elements }
+            {
+                tags.filter((tag, index) => count > index)
+                    .map((tag, index) => <li key={`tag${index}`} className={styles.tags__item}>{tag}</li>)
+            }
         </ul>
     )
 }
