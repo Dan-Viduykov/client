@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { IGame } from '../../services/game.types';
 import { BasketState } from './basket.types';
-import { IGame } from './../../types/game';
 
 const initialState: BasketState = {
   games: []
@@ -14,7 +14,7 @@ export const basketSlice = createSlice({
       state.games.push(action.payload)
     },
     removeGame: (state, action: PayloadAction<string>) => {
-      state.games.filter(game => game._id !== action.payload)
+      state.games = state.games.filter(game => game._id !== action.payload)
     }
   },
 })

@@ -1,11 +1,11 @@
-import { FC } from "react";
+import React, { FC, MouseEvent } from "react";
 import styles from "./GameCard.module.scss";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { IGame } from "../../types/game";
 import Tags from "../Tags";
-import ErrorBoundary from "../ErrorBoundary";
 import CardButton from "../CardButton";
+import { IGame } from "../../services/game.types";
+import { useActions } from '../../hooks/useActions'
 
 interface GameCardProps {
     className?: string;
@@ -13,10 +13,15 @@ interface GameCardProps {
 }
 
 const GameCard: FC<GameCardProps> = ({game, className}) => {
-    const router = useRouter();
+    const router = useRouter(); 
+    const {} = useActions()
     
+    const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
+        router.push(`/game/${game._id}`);
+    }
+
     return (
-        <a className={styles.card} onClick={() => router.push(`/game/${game._id}`)}>
+        <a className={styles.card} onClick={handleClick}>
             <div className={styles.card__img}>
                 <Image
                     loader={() => `http://localhost:5000/${game.picture}`}
@@ -34,7 +39,7 @@ const GameCard: FC<GameCardProps> = ({game, className}) => {
                 <Tags className={styles.card__tags} tags={game.tags} count={3} />
                 <div className={styles.card__bottom}>
                     <p className={styles.card__price}>{game.price} руб.</p>
-                    <CardButton />
+                    <CardButton game={game} />
                 </div>
             </div>
         </a>
