@@ -9,41 +9,51 @@
     }
 
     &__list {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
+        max-width: 1440px;
+        display: grid;
+        gap: 20px;
     }
 
     &__item {
-        width: 1000px;
+        width: 100%;
         margin-bottom: 32px;
     }
 }
 
 .game {
-    display: flex;
+    display: grid;
+    grid-template-columns: 320px auto;
+    gap: 16px;
+    background-color: $darkgray;
     
     &__img {    
-        width: 200px;
-        height: 200px;
-        margin-right: 16px;
+        width: 100%;
+        height: 150px;
+        border-radius: 0 32px 32px 0;
+        overflow: hidden;
 
         img {
             object-fit: cover;
         }
     }
 
+    &__content {
+        width: 100%;
+        padding: 8px;
+        display: grid;
+        grid-template-columns: max-content auto min-content;
+        gap: 16px;
+    }
+
     &__name {
-        margin-right: auto;
         font-size: 28px;
         color: $white;
     }
 
     &__price {
-        margin-right: 16px;
+        justify-self: end;
         font-size: 28px;
-        color: $white;
+        color: $primary;
     }
 
     &__del {
@@ -51,6 +61,13 @@
         background: transparent;
         border: 1px solid darkgrey;
         border-radius: 8px;
+        font-size: 20px;
         color: $white;
+        transition: .2s;
+
+        &:hover {
+            background: $secondary-opposite;
+            color: $black;
+        }
     }
 }

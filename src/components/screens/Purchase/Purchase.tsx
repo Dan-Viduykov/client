@@ -12,25 +12,30 @@ const Purchase: FC = () => {
 
     return (
         <div className={styles.order}>
-            <p className={styles.order__total}>3 товара на сумму {totalPrice}</p>
+            <p className={styles.order__total}>{games.length} товара на сумму {totalPrice}</p>
             <ul className={styles.order__list}>
                 {games.map(game => {
                     return (
                         <li key={game._id} className={`${styles.order__item} ${styles.game}`}>
                             <div className={styles.game__img}>
                                 <Image
-                                    src={game.picture}
-                                    loader={() => game.picture}
-                                    width={200}
-                                    height={200}
+                                    loader={() => `http://localhost:5000/${game.picture}`}
+                                    src={`http://localhost:5000/${game.picture}`}
+                                    unoptimized={true}
+                                    priority={true}
+                                    width={320}
+                                    height={150}
+                                    layout="responsive"
                                     alt={game.name}
                                 />
                             </div>
-                            <h2 className={styles.game__name}>{game.name}</h2>
-                            <p className={styles.game__price}>{game.price} руб.</p>
-                            <button className={styles.game__del}>
-                                <FontAwesomeIcon icon={faTrashCan} />
-                            </button>
+                            <div className={styles.game__content}>
+                                <h2 className={styles.game__name}>{game.name}</h2>
+                                <p className={styles.game__price}>{game.price} руб.</p>
+                                <button className={styles.game__del}>
+                                    <FontAwesomeIcon icon={faTrashCan} />
+                                </button>
+                            </div>
                         </li>
                     )
                 })}
