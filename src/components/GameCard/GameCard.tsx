@@ -1,27 +1,42 @@
-import React, { FC, MouseEvent } from "react";
-import styles from "./GameCard.module.scss";
+import React, { FC, MouseEvent, useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import Tags from "../Tags";
-import CardButton from "../CardButton";
 import { IGame } from "../../services/game.types";
 import { useActions } from '../../hooks/useActions'
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import CardButton from "../CardButton";
+import Tags from "../Tags";
+import styles from "./GameCard.module.scss";
 
 interface GameCardProps {
     className?: string;
     game: IGame;
 }
 
-const GameCard: FC<GameCardProps> = ({game, className}) => {
+const GameCard: FC<GameCardProps> = ({ game, className }) => {
     const router = useRouter(); 
-    const {} = useActions()
-    
-    const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    const { games } = useTypedSelector(state => state.basketReducer)
+    const { addGame, removeGame } = useActions()
+    const [ includes, setIncludes ] = useState<boolean>(games.includes(item => item._id === game._id))
+
+    const handleClickCard = (event: MouseEvent<HTMLAnchorElement>) => {
         router.push(`/game/${game._id}`);
     }
 
+    const handleClickButton = (event: MouseEvent<HTMLButtonElement>) => {
+        event.stopPropagation();
+
+        if (includes) {
+            removeGame(game._id)
+            setIncludes(false)
+        } else {
+            addGame(game)
+            setIncludes(true)
+        }
+    }
+
     return (
-        <a className={styles.card} onClick={handleClick}>
+        <a className={`${styles.card} ${className}`} onClick={handleClickCard}>
             <div className={styles.card__img}>
                 <Image
                     loader={() => `http://localhost:5000/${game.picture}`}
@@ -39,7 +54,7 @@ const GameCard: FC<GameCardProps> = ({game, className}) => {
                 <Tags className={styles.card__tags} tags={game.tags} count={3} />
                 <div className={styles.card__bottom}>
                     <p className={styles.card__price}>{game.price} руб.</p>
-                    <CardButton game={game} />
+                    <CardButton handleClick={handleClickButton} game={game} includesGame={includes} />
                 </div>
             </div>
         </a>
