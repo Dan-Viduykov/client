@@ -30,24 +30,22 @@ const Game: FC = () => {
     return (
         <div className={styles.game}>
             <h1 className={styles.game__title}>{game?.name}</h1>
-                <GameField className={styles.game__video} label="Ttailer">
-                    {gameVideo}
-                </GameField>
-            <div className={styles.game__info}>
-                <div className={styles.game__img}>
-                    {gameImage}
-                </div>
-                <GameField className={styles.game__field} label="About game">
-                    <p className={styles.game__description}>{game?.description}</p>
-                </GameField>
-                <GameField className={styles.game__field} label="Tags for game">
-                    <Tags tags={game?.tags} />
-                </GameField>
-                <div className={styles.game__infoBottom}>
-                    <p className={styles.game__price}>{game?.price} руб.</p>
-                    <CardButton />
-                </div>
+            <GameField className={styles.game__video} label="Ttailer">
+                {gameVideo}
+            </GameField>
+            <div className={styles.game__infoBottom}>
+                <p className={styles.game__price}>{game?.price} руб.</p>
+                <CardButton />
             </div>
+            <GameField className={styles.game__info} label="About game">
+                <p className={styles.game__description}>{game?.description}</p>
+            </GameField>
+            <div className={styles.game__img}>
+                {gameImage}
+            </div>
+            <GameField className={styles.game__tags} label="Tags for game">
+                <Tags tags={game?.tags} />
+            </GameField>
         </div>
     )
 }
