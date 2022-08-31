@@ -1,4 +1,5 @@
 @import '../../../styles/vars';
+@import '../../../styles/mixins';
 
 .order {
 
@@ -9,7 +10,6 @@
     }
 
     &__list {
-        max-width: 1440px;
         display: grid;
         gap: 20px;
     }
@@ -24,14 +24,20 @@
     display: grid;
     grid-template-columns: 320px auto;
     gap: 16px;
+    border-radius: 8px;
     background-color: $darkgray;
+    overflow: hidden;
     
     &__img {    
         width: 100%;
         height: 150px;
         border-radius: 0 32px 32px 0;
         overflow: hidden;
-
+        
+        @include display(940px) {
+            height: 100%;
+        }
+        
         img {
             object-fit: cover;
         }
@@ -41,19 +47,31 @@
         width: 100%;
         padding: 8px;
         display: grid;
-        grid-template-columns: max-content auto min-content;
+        grid-template-columns: auto auto min-content;
         gap: 16px;
+
+        @include display(940px) {
+            grid-template: min-content auto min-content / auto;
+        }
     }
 
     &__name {
         font-size: 28px;
         color: $white;
+
+        @include display(720px) {
+            font-size: 22px;
+        }
     }
 
     &__price {
         justify-self: end;
         font-size: 28px;
         color: $primary;
+
+        @include display(940px) {
+            justify-self: start;   
+        }
     }
 
     &__del {
@@ -64,6 +82,11 @@
         font-size: 20px;
         color: $white;
         transition: .2s;
+
+        @include display(940px) {
+            padding: 10px 15px;
+            justify-self: end;   
+        }
 
         &:hover {
             background: $secondary-opposite;

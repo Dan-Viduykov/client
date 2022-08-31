@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import Image from "next/image";
 import styles from "./Purchase.module.scss";
-import { useTypedSelector } from "../../../hooks/useTypedSelector";
 
 const Purchase: FC = () => {
     const { games } = useTypedSelector(state => state.basketReducer)
@@ -19,12 +19,12 @@ const Purchase: FC = () => {
                         <li key={game._id} className={`${styles.order__item} ${styles.game}`}>
                             <div className={styles.game__img}>
                                 <Image
-                                    loader={() => `http://localhost:5000/${game.picture}`}
-                                    src={`http://localhost:5000/${game.picture}`}
+                                    loader={() => `https://game-shopping.herokuapp.com/${game.picture}`}
+                                    src={`https://game-shopping.herokuapp.com/${game.picture}`}
                                     unoptimized={true}
                                     priority={true}
-                                    width={320}
-                                    height={150}
+                                    width={'100%'}
+                                    height={'100%'}
                                     layout="responsive"
                                     alt={game.name}
                                 />
