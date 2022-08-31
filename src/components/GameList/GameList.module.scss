@@ -17,5 +17,12 @@
         gap: 30px;
     }
 
+    @include display(540px) {
+        padding: 0 30px;
+        max-width: 425px;
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
     &__item {}
 }
