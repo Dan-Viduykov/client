@@ -1,3 +1,5 @@
+@import '../../styles/mixins';
+
 .tags {
     margin: -4px;
     display: flex;
@@ -10,5 +12,9 @@
         border-radius: 16px;
         color: #8FC5E0;
         font-weight: 500;
+
+        @include display(720px) {
+            font-size: 14px;
+        }
     }
 }

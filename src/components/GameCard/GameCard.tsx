@@ -36,6 +36,8 @@ const GameCard: FC<GameCardProps> = ({ game, className }) => {
         }
     }
 
+    const price = game.price === 0 ? 'Бесплатно' : `${game.price} руб`
+
     return (
         <a className={`${styles.card} ${className}`} onClick={handleClickCard}>
             <div className={styles.card__img}>
@@ -54,7 +56,7 @@ const GameCard: FC<GameCardProps> = ({ game, className }) => {
                 <h2 className={styles.card__title}>{game.name}</h2>
                 <Tags className={styles.card__tags} tags={game.tags} count={3} />
                 <div className={styles.card__bottom}>
-                    <p className={styles.card__price}>{game.price} руб.</p>
+                    <p className={styles.card__price}>{price}</p>
                     <CardButton handleClick={handleClickButton} includesGame={includes} />
                 </div>
             </div>
