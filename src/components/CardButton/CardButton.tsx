@@ -1,16 +1,13 @@
-import { FC, useEffect, useState } from "react";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
-import { IGame } from "../../services/game.types";
+import { FC } from "react";
 import styles from "./CardButton.module.scss";
 
 interface CardButtonProps {
     className?: string;
-    game?: IGame;
     handleClick?: (event) => void;
     includesGame?: boolean;
 }
 
-const CardButton: FC<CardButtonProps> = ({ className, game, handleClick, includesGame }) => {
+const CardButton: FC<CardButtonProps> = ({ className, handleClick, includesGame }) => {
     return (
         <button
             className={

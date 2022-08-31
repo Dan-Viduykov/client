@@ -17,7 +17,8 @@ const GameCard: FC<GameCardProps> = ({ game, className }) => {
     const router = useRouter(); 
     const { games } = useTypedSelector(state => state.basketReducer)
     const { addGame, removeGame } = useActions()
-    const [ includes, setIncludes ] = useState<boolean>(games.includes(item => item._id === game._id))
+    const initialInclude = games.filter(item => item._id === game._id)
+    const [ includes, setIncludes ] = useState<boolean>(initialInclude.length > 0 ? true : false)
 
     const handleClickCard = (event: MouseEvent<HTMLAnchorElement>) => {
         router.push(`/game/${game._id}`);
@@ -54,7 +55,7 @@ const GameCard: FC<GameCardProps> = ({ game, className }) => {
                 <Tags className={styles.card__tags} tags={game.tags} count={3} />
                 <div className={styles.card__bottom}>
                     <p className={styles.card__price}>{game.price} руб.</p>
-                    <CardButton handleClick={handleClickButton} game={game} includesGame={includes} />
+                    <CardButton handleClick={handleClickButton} includesGame={includes} />
                 </div>
             </div>
         </a>
