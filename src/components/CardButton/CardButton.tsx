@@ -5,9 +5,9 @@ import styles from "./CardButton.module.scss";
 
 interface CardButtonProps {
     className?: string;
-    game: IGame;
-    handleClick: (event) => void;
-    includesGame: boolean;
+    game?: IGame;
+    handleClick?: (event) => void;
+    includesGame?: boolean;
 }
 
 const CardButton: FC<CardButtonProps> = ({ className, game, handleClick, includesGame }) => {

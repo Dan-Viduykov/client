@@ -39,8 +39,8 @@ const GameCard: FC<GameCardProps> = ({ game, className }) => {
         <a className={`${styles.card} ${className}`} onClick={handleClickCard}>
             <div className={styles.card__img}>
                 <Image
-                    loader={() => `http://localhost:5000/${game.picture}`}
-                    src={`http://localhost:5000/${game.picture}`}
+                    loader={() => `https://game-shopping.herokuapp.com/${game.picture}`}
+                    src={`https://game-shopping.herokuapp.com/${game.picture}`}
                     unoptimized={true}
                     priority={true}
                     width={324}

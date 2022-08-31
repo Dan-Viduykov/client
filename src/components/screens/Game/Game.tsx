@@ -14,11 +14,11 @@ const Game: FC = () => {
     const {isLoading, isError, data: game} = useGetGameByIdQuery(id);
 
     const gameVideo = !game?.video || isLoading ? <Loading />
-                        : <video src={`http://localhost:5000/${game?.video}`} controls />;
+                        : <video src={`https://game-shopping.herokuapp.com/${game?.video}`} controls />;
     const gameImage = !game?.video || isLoading ? <Loading />
                         : <Image
-                            loader={() => `http://localhost:5000/${game?.picture}`}
-                            src={`http://localhost:5000/${game?.picture}`}
+                            loader={() => `https://game-shopping.herokuapp.com/${game?.picture}`}
+                            src={`https://game-shopping.herokuapp.com/${game?.picture}`}
                             unoptimized={true}
                             priority={true}
                             width={324}

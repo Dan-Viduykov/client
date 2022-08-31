@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const gameApi = createApi({
     reducerPath: 'gameApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:5000/'
+        baseUrl: 'https://game-shopping.herokuapp.com/'
     }),
     endpoints: builder => ({
         getGames: builder.query<IGame[], IBaseQeury>({
