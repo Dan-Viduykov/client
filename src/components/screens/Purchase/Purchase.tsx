@@ -19,8 +19,8 @@ const Purchase: FC = () => {
                         <li key={game._id} className={`${styles.order__item} ${styles.game}`}>
                             <div className={styles.game__img}>
                                 <Image
-                                    loader={() => `https://game-shopping.herokuapp.com/${game.picture}`}
-                                    src={`https://game-shopping.herokuapp.com/${game.picture}`}
+                                    loader={() => `${game.picture}`}
+                                    src={`${game.picture}`}
                                     unoptimized={true}
                                     priority={true}
                                     width={'100%'}

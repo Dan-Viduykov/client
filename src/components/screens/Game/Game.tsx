@@ -14,11 +14,19 @@ const Game: FC = () => {
     const {isLoading, isError, data: game} = useGetGameByIdQuery(id);
 
     const gameVideo = !game?.video || isLoading ? <Loading />
-                        : <video src={`https://game-shopping.herokuapp.com/${game?.video}`} controls />;
+                        : <iframe
+                            width="1190"
+                            height="669"
+                            src={game.video}
+                            title="Counter-Strike: Global Offensive Trailer"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                        />;
     const gameImage = !game?.video || isLoading ? <Loading />
                         : <Image
-                            loader={() => `https://game-shopping.herokuapp.com/${game?.picture}`}
-                            src={`https://game-shopping.herokuapp.com/${game?.picture}`}
+                            loader={() => `${game?.picture}`}
+                            src={`${game?.picture}`}
                             unoptimized={true}
                             priority={true}
                             width={324}

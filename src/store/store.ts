@@ -1,7 +1,6 @@
 import { configureStore, PreloadedState } from "@reduxjs/toolkit";
 import { createWrapper } from "next-redux-wrapper";
 import { basketReducer } from './basket/basket.slice';
-import { loadReducer } from './load/load.slice';
 import { gameApi } from './../services/game.api';
 import { useMemo } from 'react'
 
@@ -11,7 +10,6 @@ export const initStore = (preloadedState = {}) => {
   return configureStore({
     reducer: {
       basketReducer,
-      loadReducer,
       [gameApi.reducerPath]: gameApi.reducer,
     },
     preloadedState,
