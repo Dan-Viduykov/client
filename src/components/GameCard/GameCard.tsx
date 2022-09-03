@@ -6,6 +6,7 @@ import { useTypedSelector } from "../../hooks/useTypedSelector";
 import CardButton from "../CardButton";
 import Tags from "../Tags";
 import styles from "./GameCard.module.scss";
+import { useActions } from "../../hooks/useActions";
 
 interface GameCardProps {
     className?: string;
@@ -14,12 +15,19 @@ interface GameCardProps {
 
 const GameCard: FC<GameCardProps> = ({ game, className }) => {
     const router = useRouter(); 
-    const { games } = useTypedSelector(state => state.basketReducer)
-    const initialInclude = games.filter(item => item._id === game._id)
-    const [ includes, setIncludes ] = useState<boolean>(initialInclude.length > 0 ? true : false)
+    const { games } = useTypedSelector(state => state.basketReducer);
+    const { addGame, removeGame } = useActions()
 
+    const include = Boolean(games.filter((item) => item._id === game._id))
+    const [ includes, setIncludes ] = useState<boolean>(include)
+    
     const handleClickCard = (event: MouseEvent<HTMLAnchorElement>) => {
         router.push(`/game/${game._id}`);
+    } 
+    const hadleClickButton = (event: MouseEvent<HTMLAnchorElement>) => {
+        event.stopPropagation();
+        setIncludes(state => !state)
+        includes ? addGame(game) : removeGame(game._id)
     }
 
     const price = game.price === 0 ? 'Бесплатно' : `${game.price} руб`
@@ -43,7 +51,7 @@ const GameCard: FC<GameCardProps> = ({ game, className }) => {
                 <Tags className={styles.card__tags} tags={game.tags} count={3} />
                 <div className={styles.card__bottom}>
                     <p className={styles.card__price}>{price}</p>
-                    <CardButton handleClick={() => {}} includesGame={includes} />
+                    <CardButton handleClick={hadleClickButton} active={!includes} />
                 </div>
             </div>
         </a>

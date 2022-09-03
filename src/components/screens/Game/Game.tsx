@@ -15,18 +15,18 @@ const Game: FC = () => {
 
     const gameVideo = !game?.video || isLoading ? <Loading />
                         : <iframe
-                            width="1190"
-                            height="669"
+                            width="100%"
+                            height="100%"
                             src={game.video}
-                            title="Counter-Strike: Global Offensive Trailer"
+                            title={game.name}
                             frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
                         />;
-    const gameImage = !game?.video || isLoading ? <Loading />
+    const gameImage = !game?.picture || isLoading ? <Loading />
                         : <Image
-                            loader={() => `${game?.picture}`}
-                            src={`${game?.picture}`}
+                            loader={() => game?.picture}
+                            src={game?.picture}
                             unoptimized={true}
                             priority={true}
                             width={324}
@@ -38,9 +38,9 @@ const Game: FC = () => {
     return (
         <div className={styles.game}>
             <h1 className={styles.game__title}>{game?.name}</h1>
-            <GameField className={styles.game__video} label="Ttailer">
+            <div className={styles.game__video}>
                 {gameVideo}
-            </GameField>
+            </div>
             <div className={styles.game__infoBottom}>
                 <p className={styles.game__price}>{game?.price} руб.</p>
                 <CardButton />

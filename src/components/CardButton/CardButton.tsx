@@ -4,20 +4,20 @@ import styles from "./CardButton.module.scss";
 interface CardButtonProps {
     className?: string;
     handleClick?: (event) => void;
-    includesGame?: boolean;
+    active?: boolean;
 }
 
-const CardButton: FC<CardButtonProps> = ({ className, handleClick, includesGame }) => {
+const CardButton: FC<CardButtonProps> = ({ className, handleClick, active = false }) => {
     return (
         <button
             className={
                 `${styles.button}
                  ${className}
-                 ${includesGame ? styles.button_remove : styles.button_add}`
+                 ${active ? styles.button_remove : styles.button_add}`
             }
             onClick={handleClick}
         >
-            {includesGame ? 'убрать из корзины' : 'в корзину'}
+            {active ? 'убрать из корзины' : 'в корзину'}
         </button>
     )
 }
