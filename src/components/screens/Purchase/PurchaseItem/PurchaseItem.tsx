@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Image from "next/image";
-import { IGame } from "../../../../services/game.types";
+import { IGame } from "@/services/game.types";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./PurchaseItem.module.scss";

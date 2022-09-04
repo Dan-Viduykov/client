@@ -1,8 +1,8 @@
 import { GetServerSideProps, NextPage } from "next";
-import { getGameById } from "../../services/game.api";
-import { initStore } from "../../store/store";
-import Game from "../../components/screens/Game";
-import MainLayout from "../../layouts/MainLayout";
+import { getGameById } from "@/services/game.api";
+import { initStore } from "@/store/store";
+import Game from "@/components/screens/Game";
+import MainLayout from "@/layouts/MainLayout";
 
 const GamePage: NextPage  = () => {
     return (

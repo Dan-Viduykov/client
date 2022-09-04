@@ -1,9 +1,9 @@
 import { FC, useState } from "react";
+import { useRouter } from "next/router";
+import { useTypedSelector } from "@/hooks/useTypedSelector";
 import { faShoppingCart, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./HeaderBasket.module.scss";
-import { useRouter } from "next/router";
-import { useTypedSelector } from "../../../hooks/useTypedSelector";
 
 const HeaderBasket: FC = () => {
     const router = useRouter()

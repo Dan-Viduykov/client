@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useTypedSelector } from "../../../hooks/useTypedSelector";
+import { useTypedSelector } from "@/hooks/useTypedSelector";
 import styles from "./Purchase.module.scss";
 import PurchaseItem from "./PurchaseItem";
 

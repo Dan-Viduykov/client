@@ -1,7 +1,5 @@
 import { FC } from "react";
-import GameCard from "../../GameCard";
-import GameList from "../../GameList";
-import styles from "./Home.module.scss";
+import GameList from "@/components/GameList";
 
 const Home: FC = () => {
     return (

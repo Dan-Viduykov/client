@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { FC } from "react";
-import Container from "../Container";
+import Container from "@/components/Container";
 import styles from "./Header.module.scss";
 import HeaderBasket from "./HeaderBasket";
 

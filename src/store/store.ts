@@ -1,8 +1,8 @@
+import { useMemo } from 'react'
 import { configureStore, PreloadedState } from "@reduxjs/toolkit";
 import { createWrapper } from "next-redux-wrapper";
 import { basketReducer } from './basket/basket.slice';
-import { gameApi } from './../services/game.api';
-import { useMemo } from 'react'
+import { gameApi } from '@/services/game.api';
 
 let store: AppStore;
 

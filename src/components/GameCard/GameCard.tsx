@@ -1,12 +1,12 @@
 import React, { FC, MouseEvent, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { IGame } from "../../services/game.types";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
-import CardButton from "../CardButton";
-import Tags from "../Tags";
+import { IGame } from "@/services/game.types";
+import { useActions } from "@/hooks/useActions";
+import { useTypedSelector } from "@/hooks/useTypedSelector";
+import CardButton from "@/components/CardButton";
+import Tags from "@/components/Tags";
 import styles from "./GameCard.module.scss";
-import { useActions } from "../../hooks/useActions";
 
 interface GameCardProps {
     className?: string;

@@ -1,13 +1,13 @@
 import { useRouter } from "next/router";
 import { FC } from "react";
 import Image from "next/image";
-import Tags from "../../Tags";
-import { useGetGameByIdQuery } from "../../../services/game.api";
+import { useGetGameByIdQuery } from "@/services/game.api";
 import placeholder from '../../../assets/placeholder.jpg'
 import styles from "./Game.module.scss";
-import Loading from "../../Loading";
+import Tags from "@/components/Tags";
+import Loading from "@/components/Loading";
+import CardButton from "@/components/CardButton";
 import GameField from "./GameField";
-import CardButton from "../../CardButton";
 
 const Game: FC = () => {
     const {query: {id}} = useRouter()

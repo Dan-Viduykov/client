@@ -1,7 +1,7 @@
 import { FC } from "react";
 import styles from "./GameList.module.scss";
-import GameCard from "../GameCard";
-import { useGetGamesQuery } from "../../services/game.api";
+import GameCard from "@/components/GameCard";
+import { useGetGamesQuery } from "@/services/game.api";
 
 const GameList: FC = () => {    
     const {isLoading, isError, data} = useGetGamesQuery({})

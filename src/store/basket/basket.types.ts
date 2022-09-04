@@ -1,4 +1,4 @@
-import { IGame } from './../../services/game.types';
+import { IGame } from '@/services/game.types';
 
 
 export interface BasketState {
